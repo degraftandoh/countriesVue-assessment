@@ -4,10 +4,10 @@
     <TheNavbarComponent />
     <section class="Sub_navigation_menu">
       <div class="entry_field">
-        <img src="../assets/search.svg" alt="Search icon" />
+        <img src="../assets/search.svg" alt="Search logo" />
         <input v-model="countriesStore.search" type="text" placeholder="Search for a country…" />
       </div>
-      <div class="region-box">
+      <div class="regional_content">
         <select v-model="countriesStore.selectedRegion" name="region" id="region">
           <option value="">Filter by Region</option>
           <option value="Africa">Africa</option>
@@ -18,15 +18,15 @@
         </select>
       </div>
     </section>
-    <div v-if="countriesStore.filteredCountries.length > 0" class="card-container">
+    <div v-if="countriesStore.filteredCountries.length > 0" class="card_holder">
       <div
         v-for="country in countriesStore.filteredCountries"
         :key="country.name.common"
-        class="country-card"
+        class="country_panel"
         @click="redirectToCountryDetail(country.name.common)"
       >
         <img :src="country.flags.png" alt="Flag" class="flag" />
-        <div class="country-info">
+        <div class="geographic_data">
           <h3>{{ country.name.common }}</h3>
           <p><strong>Population:</strong> {{ country.population }}</p>
           <p><strong>Region:</strong> {{ country.region?.common }}</p>
@@ -57,7 +57,7 @@ onMounted(() => {
 </script>
 
 <style scoped>
-section {
+segment {
   background: #fafafa;
   padding: 24px 16px 32px 16px;
   display: flex;
@@ -129,24 +129,24 @@ select:hover {
   border-color: #aaa;
 }
 
-.card-container {
+.card_holder {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 40px;
 }
 
-.country-card {
+.country_panel {
   border-radius: 5px;
   background: #fff;
 }
 
-.country-card img {
+.country_panel img {
   width: 267px;
   height: 160px;
 }
 
-.country-info {
+.geographic_data {
   padding: 24px 0px 48px 24px;
   display: flex;
   align-items: flex-start;
@@ -154,7 +154,7 @@ select:hover {
   gap: 8px;
 }
 
-.country-info h3 {
+.geographic_data h3 {
   color: #111517;
   font-family: 'Nunito Sans';
   font-size: 18px;
@@ -162,7 +162,7 @@ select:hover {
   line-height: 26px;
 }
 
-.country-info p {
+.geographic_data p {
   color: #111517;
   font-family: 'Nunito Sans';
   font-size: 14px;
@@ -171,7 +171,7 @@ select:hover {
 }
 
 @media (min-width: 1024px) {
-  section {
+  segment {
     flex-direction: row;
     justify-content: space-between;
     padding: 48px 80px;
